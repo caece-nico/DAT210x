@@ -8,8 +8,11 @@ import numpy as np
 #
 # .. your code here ..
 
+data = pd.read_csv('C:\\Users\\leali\\Documents\\GitHub\\DAT210x\\Module2\\Datasets\\census.data', sep = ',')
 
+data.columns = ['drop','education', 'age', 'capital-gain', 'race', 'capital-loss', 'hours-per-week', 'sex', 'classification']
 
+del data['drop']
 #
 # TODO:
 # Use basic pandas commands to look through the dataset... get a
@@ -24,6 +27,14 @@ import numpy as np
 # na_values when loading the dataframe.
 #
 # .. your code here ..
+
+data.dtypes
+
+data['capital-gain'] = data['capital-gain'].replace("?","NaN")
+data['capital-gain'].unique()
+
+data['capital-gain'] = np.to_numeric(data['capital-gain'],errors = 'coerce')
+
 
 
 
@@ -40,7 +51,7 @@ import numpy as np
 #
 # .. your code here ..
 
-
+## Categorical Data -> Race, sex (You cant order it)
 
 #
 # TODO:
@@ -48,4 +59,5 @@ import numpy as np
 #
 # .. your code here ..
 
-
+## Ordinal Data -> Education and Hours-per-week. Bacause you can establish 
+## and order (Ex. Phd, master, Degree = (1,2,3) or (haigh, medium, low))
